@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping package="pojo">
+ <class name="Customer" table="customer">
+ 	<id name="id" column="id" type="integer">
+ 		<generator class="sequence">
+ 			<param name="sequence" >MYSEQ_SEQUENCE</param>
+ 		</generator>
+ 	</id>
+ 	<property name="name" column="name" type="string"></property>
+ 	<property name="age" column="age"></property>
+ 	<set name="orders" inverse="true">
+ 		<key column="customer_id" not-null="true"/>
+ 		<one-to-many class="MyOrder"></one-to-many>
+ 	</set>
+ </class>
+ </hibernate-mapping>

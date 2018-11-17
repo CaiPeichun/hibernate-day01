@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ <class name="pojo.MyOrder" table="myorder">
+ <id name="id" column="id" type="integer">
+ 	<generator class="sequence">
+ 		<param name="sequence">MYSEQ_SEQUENCE</param>
+ 	</generator>
+  </id>
+  <property name="totalprice" column="totalprice"></property>
+ <many-to-one name="customer"
+ class="pojo.Customer" column="customer_id" cascade="delete"></many-to-one>
+ </class>
+ </hibernate-mapping>
