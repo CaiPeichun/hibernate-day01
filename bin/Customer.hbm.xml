@@ -11,7 +11,7 @@
  	</id>
  	<property name="name" column="name" type="string"></property>
  	<property name="age" column="age"></property>
- 	<set name="orders" inverse="true">
+ 	<set name="orders" inverse="true" cascade="delete">
  		<key column="customer_id" not-null="true"/>
  		<one-to-many class="MyOrder"></one-to-many>
  	</set>

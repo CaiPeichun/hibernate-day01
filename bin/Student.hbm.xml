@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="pojo.Student" table="student" lazy="false">
+	<id name="id" column="id" type="integer">
+		<generator class="sequence">
+ 		<param name="sequence">MYSEQ_SEQUENCE</param>
+ 	</generator>
+	</id>
+	<property name="name" column="name" type="string"></property>
+	<!-- 映射多对多关联关系，一定要把一端的inverse打开设置
+	为true，若两端都负责关联关系维护的话，会有冲突。设计中间表的操作，中间表是联合主键-->
+	<set name="course" table="student_course" inverse="true">
+		<!-- key元素指定student_course表中参照student表的外键是sid -->
+		<key column="sid"></key>
+		<!-- many-to-many
+			class属性指定course集合中存放的course对象
+			column属性指定student_course表参照course表的外键是cid -->
+		<many-to-many class="pojo.Course" column="cid"></many-to-many>
+	</set>
+</class>
+</hibernate-mapping>

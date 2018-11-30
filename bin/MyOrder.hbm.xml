@@ -11,6 +11,6 @@
   </id>
   <property name="totalprice" column="totalprice"></property>
  <many-to-one name="customer"
- class="pojo.Customer" column="customer_id" cascade="delete"></many-to-one>
+ class="pojo.Customer" column="customer_id" ></many-to-one>
  </class>
  </hibernate-mapping>
